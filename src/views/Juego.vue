@@ -62,7 +62,7 @@ const goGame = () => {
       </select>
     </div>
     <div class="flex justify-between mt-3">
-      <SmallButton @click="goBack" text="Atras"></SmallButton>
+      <SmallButton @click="goBack" text="Atrás"></SmallButton>
       <SmallButton
         @click="goGame"
         text="Aceptar"

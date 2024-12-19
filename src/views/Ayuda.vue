@@ -27,7 +27,7 @@ const goBack = () => {
     <li>Podra ver las puntuaciones obtenidas por cada jugador</li>
   </ul>
   <div class="absolute bottom-10 left-10">
-    <SmallButton @click="goBack" text="Atras"></SmallButton>
+    <SmallButton @click="goBack" text="Atrás"></SmallButton>
   </div>
 </template>
 

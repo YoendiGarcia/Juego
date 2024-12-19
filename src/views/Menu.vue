@@ -12,14 +12,19 @@ const navigateToPuntuacion = () => {
 const navigateToAyuda = () => {
   router.push("/ayuda");
 };
+
+const goOut = () =>{
+  window.close()
+}
+
 </script>
 
 <template>
   <img src="../assets/img/Icono.png" alt="Icono" />
   <div class="flex flex-col gap-2 m-9">
     <Button @click="navigateToJugar" text="Jugar"></Button>
-    <Button @click="navigateToPuntuacion" text="Puntuacion"></Button>
+    <Button @click="navigateToPuntuacion" text="Puntuación"></Button>
     <Button @click="navigateToAyuda" text="Ayuda"></Button>
-    <Button text="Salir"></Button>
+    <Button @click="goOut" text="Salir"></Button>
   </div>
 </template>

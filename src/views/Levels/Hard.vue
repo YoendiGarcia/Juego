@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import SmallButton from "@/components/SmallButton.vue";
+import arrayPoints from "@/main";
 
 const positions = ref(Array(64).fill(1));
 const rotations = ref(Array(64).fill(0));
@@ -9,9 +10,11 @@ const movements = ref(30);
 const time = ref(60);
 const props = defineProps(["username", "level"]);
 const router = useRouter();
+const audioRef = ref()
 let intevalId;
 
 const rotateImage = (index) => {
+  audioRef.value.play()
   rotations.value[index] += 90;
   movements.value--;
   if (positions.value[index] == 4) {
@@ -20,6 +23,10 @@ const rotateImage = (index) => {
     positions.value[index] += 1;
   }
   if (winGame()) {
+    arrayPoints.push({
+      username: props.username,
+      value: 3,
+    });
     router.push("/victory");
   }
   if (movements.value == 0) {
@@ -75,6 +82,17 @@ const goBack = () => {
   router.push("/menu");
 };
 
+const playAudio = async () => {
+  try {
+    const sound = await import("@/assets/audio/rotation.mp3");
+    const audio = new Audio(sound.default);
+    audioRef.value = audio;
+  } catch (error) {
+    console.error("Error al cargar o reproducir el audio:", error);
+  }
+};
+
+onMounted(playAudio)
 onMounted(startTimer);
 onUnmounted(endTimer);
 </script>
