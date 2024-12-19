@@ -1,6 +1,7 @@
 <script setup>
 import SmallButton from "../components/SmallButton.vue";
 import Easy from "./Levels/Easy.vue";
+import Intermediate from "./Levels/Intermediate.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -70,6 +71,11 @@ const goGame = () => {
     </div>
   </div>
   <Easy v-if="levelToPlay == 'facil'" :username="username" level="Fácil"></Easy>
+  <Intermediate
+    v-else-if="levelToPlay == 'intermedio'"
+    :username="username"
+    level="Intermedio"
+  ></Intermediate>
 </template>
 
 <style scoped>

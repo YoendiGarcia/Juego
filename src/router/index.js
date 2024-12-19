@@ -5,6 +5,7 @@ import Ayuda from "@/views/Ayuda.vue";
 import Juego from "@/views/Juego.vue";
 import Puntuacion from "@/views/Puntuacion.vue";
 import Victory from "@/views/Victory.vue";
+import Lose from "@/views/Lose.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: "/victory",
       name: "victory",
       component: Victory,
+    },
+    {
+      path: "/lose",
+      name: "lose",
+      component: Lose,
     },
   ],
 });
