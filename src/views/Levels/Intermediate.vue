@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import SmallButton from "@/components/SmallButton.vue";
 
 const positions = ref(Array(36).fill(1));
 const rotations = ref(Array(36).fill(0));
@@ -27,22 +28,26 @@ const rotateImage = (index) => {
 const winGame = () => {
   if (
     positions.value[1] == 3 &&
-    positions.value[7] == 2 &&
+    (positions.value[7] == 2 || positions.value[7] == 4) &&
     positions.value[12] == 2 &&
     positions.value[13] == 4 &&
-    positions.value[18] == 2 &&
-    positions.value[24] == 2 &&
+    (positions.value[18] == 2 || positions.value[18] == 4) &&
+    (positions.value[24] == 2 || positions.value[24] == 4) &&
     positions.value[30] == 1 &&
     positions.value[31] == 4 &&
     positions.value[25] == 2 &&
-    positions.value[26] == 1 &&
+    (positions.value[26] == 1 || positions.value[26] == 3) &&
     positions.value[27] == 3 &&
     positions.value[33] == 1 &&
-    positions.value[34] == 1
+    (positions.value[34] == 1 || positions.value[34] == 3)
   ) {
     return true;
   }
   return false;
+};
+
+const goBack = () => {
+  router.push("/menu");
 };
 </script>
 
@@ -299,12 +304,13 @@ const winGame = () => {
     </div>
   </main>
   <p class="text-blue-800 text-end">Fin</p>
+  <SmallButton @click="goBack" text="Atrás"></SmallButton>
 </template>
 
 <style scoped>
 img {
-  height: 90px;
-  width: 90px;
+  height: 80px;
+  width: 80px;
   border: 1px solid black;
 }
 

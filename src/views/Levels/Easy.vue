@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import SmallButton from "@/components/SmallButton.vue";
 
 const positions = ref(Array(16).fill(1));
 const rotations = ref(Array(16).fill(0));
@@ -31,13 +32,19 @@ const winGame = () => {
   }
   return false;
 };
+
+const goBack = ()=>{
+  router.push('/menu')
+}
+
 </script>
 
 <template>
-  <header class="flex justify-around text-blue-800 text-3xl mb-8">
+  <header class="flex justify-around text-blue-800 text-3xl mb-2">
     <p>Nivel: {{ props.level }}</p>
     <p>Jugador: {{ props.username }}</p>
   </header>
+  <hr>
   <p class="text-blue-800">Inicio</p>
   <div>
     <img
@@ -144,6 +151,7 @@ const winGame = () => {
     />
   </div>
   <p class="text-blue-800 text-end">Fin</p>
+  <SmallButton @click="goBack" text="Atrás"></SmallButton>
 </template>
 
 <style scoped>

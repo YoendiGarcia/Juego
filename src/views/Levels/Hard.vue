@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
+import SmallButton from "@/components/SmallButton.vue";
 
 const positions = ref(Array(64).fill(1));
 const rotations = ref(Array(64).fill(0));
@@ -29,27 +30,27 @@ const rotateImage = (index) => {
 const winGame = () => {
   if (
     positions.value[1] == 1 &&
-    positions.value[2] == 2 &&
-    positions.value[3] == 2 &&
+    (positions.value[2] == 2 || positions.value[2] == 4) &&
+    (positions.value[3] == 2 || positions.value[3] == 4) &&
     (positions.value[11] == 1 || positions.value[11] == 2) &&
     positions.value[12] == 3 &&
     positions.value[20] == 4 &&
-    positions.value[21] == 1 &&
-    positions.value[22] == 2 &&
+    (positions.value[21] == 1 || positions.value[21] == 3) &&
+    (positions.value[22] == 2 || positions.value[22] == 4) &&
     positions.value[23] == 3 &&
     positions.value[28] == 1 &&
-    positions.value[29] == 1 &&
-    positions.value[30] == 2 &&
+    (positions.value[29] == 1 || positions.value[29] == 3) &&
+    (positions.value[30] == 2 || positions.value[40] == 4) &&
     positions.value[31] == 4 &&
     positions.value[36] == 4 &&
-    positions.value[37] == 1 &&
+    (positions.value[37] == 1 || positions.value[37] == 3) &&
     (positions.value[38] == 1 || positions.value[38] == 3) &&
     positions.value[39] == 3 &&
     (positions.value[45] == 2 || positions.value[45] == 3) &&
-    positions.value[46] == 2 &&
+    (positions.value[46] == 2 || positions.value[46] == 4) &&
     positions.value[47] == 3 &&
     positions.value[53] == 1 &&
-    positions.value[54] == 1 &&
+    (positions.value[54] == 1 || positions.value[54] == 3) &&
     positions.value[55] == 2
   ) {
     return true;
@@ -68,6 +69,10 @@ const startTimer = () => {
 
 const endTimer = () => {
   clearInterval(intevalId);
+};
+
+const goBack = () => {
+  router.push("/menu");
 };
 
 onMounted(startTimer);
@@ -505,12 +510,13 @@ onUnmounted(endTimer);
     </div>
   </main>
   <p class="text-blue-800 text-end">Fin</p>
+  <SmallButton @click="goBack" text="Atrás"></SmallButton>
 </template>
 
 <style scoped>
 img {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border: 1px solid black;
 }
 
