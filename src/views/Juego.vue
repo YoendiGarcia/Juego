@@ -12,15 +12,20 @@ const router = useRouter();
 const visible = ref(true);
 const isDisabled = ref(true);
 const levelSelected = ref("facil");
+const showError = ref(false);
 let levelToPlay = "";
 
 const handleUsername = () => {
-  if (username.value.length < 4) {
+  if (username.value.length == 0) {
+    showError.value = false;
+  } else if (username.value.length < 3) {
     disabledButton.value = true;
     isDisabled.value = true;
+    showError.value = true;
   } else {
     disabledButton.value = false;
     isDisabled.value = false;
+    showError.value = false;
   }
 };
 
@@ -50,6 +55,9 @@ const goGame = () => {
         placeholder="Entra el nombre del jugador"
       />
     </div>
+    <p class="text-red-600" v-show="showError">
+      El nombre de jugador debe tener 3 caracteres o más
+    </p>
     <div class="flex justify-center items-center gap-3">
       <label class="text-blue-800 text-xl m-4">Dificultad: </label>
       <select
