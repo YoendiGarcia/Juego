@@ -36,10 +36,10 @@ const rotateImage = (index) => {
 
 const winGame = () => {
   if (
-    positions.value[1] == 1 &&
+    (positions.value[1] == 1 || positions.value[1] == 3) &&
     (positions.value[2] == 2 || positions.value[2] == 4) &&
-    (positions.value[3] == 2 || positions.value[3] == 4) &&
-    (positions.value[11] == 1 || positions.value[11] == 2) &&
+    positions.value[3] == 2 &&
+    positions.value[11] == 1 &&
     positions.value[12] == 3 &&
     positions.value[20] == 4 &&
     (positions.value[21] == 1 || positions.value[21] == 3) &&
@@ -178,13 +178,13 @@ onUnmounted(endTimer);
         @click="rotateImage(9)"
       />
       <img
-        src="../../assets/img/Diapositiva4.png"
+        src="../../assets/img/Diapositiva1.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[10]}deg)` }"
         @click="rotateImage(10)"
       />
       <img
-        src="../../assets/img/Diapositiva5.png"
+        src="../../assets/img/Diapositiva2.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[11]}deg)` }"
         @click="rotateImage(11)"
@@ -224,7 +224,7 @@ onUnmounted(endTimer);
         @click="rotateImage(16)"
       />
       <img
-        src="../../assets/img/Diapositiva1.png"
+        src="../../assets/img/Diapositiva2.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[17]}deg)` }"
         @click="rotateImage(17)"
@@ -236,7 +236,7 @@ onUnmounted(endTimer);
         @click="rotateImage(18)"
       />
       <img
-        src="../../assets/img/Diapositiva4.png"
+        src="../../assets/img/Diapositiva1.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[19]}deg)` }"
         @click="rotateImage(19)"
@@ -282,7 +282,7 @@ onUnmounted(endTimer);
         @click="rotateImage(25)"
       />
       <img
-        src="../../assets/img/Diapositiva3.png"
+        src="../../assets/img/Diapositiva4.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[26]}deg)` }"
         @click="rotateImage(26)"
@@ -328,7 +328,7 @@ onUnmounted(endTimer);
         @click="rotateImage(32)"
       />
       <img
-        src="../../assets/img/Diapositiva1.png"
+        src="../../assets/img/Diapositiva2.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[33]}deg)` }"
         @click="rotateImage(33)"
