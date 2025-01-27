@@ -340,7 +340,7 @@ onUnmounted(endTimer);
         @click="rotateImage(34)"
       />
       <img
-        src="../../assets/img/Diapositiva3.png"
+        src="../../assets/img/Diapositiva1.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[35]}deg)` }"
         @click="rotateImage(35)"
@@ -392,7 +392,7 @@ onUnmounted(endTimer);
         @click="rotateImage(42)"
       />
       <img
-        src="../../assets/img/Diapositiva4.png"
+        src="../../assets/img/Diapositiva1.png"
         alt="Block"
         :style="{ transform: `rotate(${rotations[43]}deg)` }"
         @click="rotateImage(43)"
