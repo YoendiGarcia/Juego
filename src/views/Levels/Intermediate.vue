@@ -9,10 +9,10 @@ const rotations = ref(Array(36).fill(0));
 const movements = ref(20);
 const props = defineProps(["username", "level"]);
 const router = useRouter();
-const audioRef = ref()
+const audioRef = ref();
 
 const rotateImage = (index) => {
-  audioRef.value.play()
+  audioRef.value.play();
   rotations.value[index] += 90;
   movements.value--;
   if (positions.value[index] == 4) {
@@ -23,11 +23,10 @@ const rotateImage = (index) => {
   if (winGame()) {
     arrayPoints.push({
       username: props.username,
-      value: 2,
+      value: 2 + movements.value,
     });
     router.push("/victory");
-  }
-  if (movements.value == 0) {
+  } else if (movements.value == 0) {
     router.push("/lose");
   }
 };
@@ -67,8 +66,7 @@ const playAudio = async () => {
   }
 };
 
-onMounted(playAudio)
-
+onMounted(playAudio);
 </script>
 
 <template>
