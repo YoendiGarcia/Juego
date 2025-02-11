@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const progressBar = ref(0);
@@ -13,6 +13,24 @@ function updateProgress() {
     }
   }, 1000);
 }
+
+const playAudio = async () => {
+  try {
+    const sound = await import("@/assets/audio/bienvenida.mp3");
+    const audio = new Audio(sound.default);
+    const sound1 = await import("@/assets/audio/musicadefondo.mp3");
+    const audio1 = new Audio(sound1.default);
+    audio1.loop = true;
+    audio1.volume = 0.3
+    audio.play()
+    audio1.play();
+  } catch (error) {
+    console.error("Error al cargar o reproducir el audio:", error);
+  }
+};
+
+
+onMounted(playAudio);
 
 updateProgress();
 </script>

@@ -3,6 +3,7 @@ import Button from "../components/Button.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
 const navigateToJugar = () => {
   router.push("/juego");
 };
@@ -13,9 +14,9 @@ const navigateToAyuda = () => {
   router.push("/ayuda");
 };
 
-const goOut = () =>{
-  window.close()
-}
+const goOut = () => {
+  window.close();
+};
 
 </script>
 

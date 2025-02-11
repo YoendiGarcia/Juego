@@ -9,18 +9,15 @@ const goMenu = () => {
   router.push("/menu");
 };
 
-const playAudio2 = async () => {
-  const sound2 = await import("@/assets/audio/voz_victoria.mp3");
-  const audio2 = new Audio(sound2.default);
-  setTimeout(audio2.play(), 2000);
-};
 
 const playAudio = async () => {
   try {
     const sound1 = await import("@/assets/audio/victory.mp3");
     const audio1 = new Audio(sound1.default);
+    const sound2 = await import("@/assets/audio/audio_victoria.mp3");
+    const audio2 = new Audio(sound2.default);
+    setTimeout(()=>{audio2.play()}, 1000);
     audio1.play();
-    await playAudio2();
   } catch (error) {
     console.error("Error al cargar o reproducir el audio:", error);
   }
